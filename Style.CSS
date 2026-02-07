@@ -1,0 +1,27 @@
+h3{
+    color: blue;
+    background-color: blanchedalmond;
+}
+h4{
+    color: rgb(248, 2, 43);
+    background-color: antiquewhite;
+}
+/* global css */
+*{
+     font-size: 30px;
+     font-weight: 500;
+     background-color: black;
+    
+}
+.myclass{
+    color: rgb(235, 51, 18);
+    background-color: aquamarine;
+}
+#myid{
+    color:rgb(24, 48, 0);
+    background-color: aqua;
+}
+h5 ,p{
+    color: rgb(9, 47, 117);
+    background-color: cadetblue;
+}
