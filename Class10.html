@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                background-color: rgb(135, 135, 170);
+                color: #C9D1D9;
+            }
+            h1 {
+                color:blue;
+            }
+
+            /* Attribute Selector*/
+            a {
+                color:rgb(15, 128, 0);
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: red;
+                font-size: 20px;
+            }
+
+            /* Child selector */
+            ul > li {
+                font-weight: bold;
+                color:aquamarine;
+            }
+
+            /* Sibling Selector */
+            h1 + p {
+                background-color: yellowgreen;
+                padding: 10px;
+                color: red;
+            }
+
+            /* :hover Pseudo-class */
+            ul li:hover {
+                color: peru
+            }
+
+            /* :nth child(n) Pseudo-class */
+            ul li:nth-child(3) {
+                background-color:purple
+            }
+
+            ul li::before {
+                content: "$";
+            }
+
+            /* ::after Pseudo-element*/
+            a::after {
+                content: "$";
+            }
+
+            /* ::first-letter Pseudo-element*/
+            p::first-letter {
+                font-size: 200%;
+                color:rgb(88, 68, 16);
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <h1>Welcome to the Space Explorer's Club</h1>
+         <p>Space exploration has always captivated human imagination. It's a journey to the unknown!</p>
+
+        <p>From the Moon to distant galaxies, we continue to explore the vastness of space.</p>
+        <ul>
+            <li>Moon Missions</li>
+            <li>Mars Rovers</li>
+            <li>International Space Station</li>
+            <li>Telescopes and Stars</li>
+            <li>Black Holes Mysteries</li>
+        </ul>
+        
+        <a href="#">Join our Mission</a>
+        <br>
+        <a href="#">Latest Space News</a>
+        <br>
+        <a href="#">Gallery of the Universe</a>
+
+    </body>
+</html>
