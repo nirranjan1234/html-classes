@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Digital Zoo Manager</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: aliceblue;
+      text-align: center;
+      color: #222222;
+    }
+
+    h1 {
+      color: darkgreen;
+    }
+
+    #zoo {
+      width: 420px;
+      border: 3px solid darkgreen;
+      border-radius: 12px;
+      background-color: white;
+      margin: 20px auto;
+      padding: 15px;
+    }
+
+    .zone {
+      border: 2px solid seagreen;
+      border-radius: 8px;
+      margin: 10px;
+      padding: 12px;
+      background-color: #f0fff0;
+      text-align: left;
+    }
+
+    .animal {
+      font-weight: bold;
+      color: darkorange;
+    }
+
+    button {
+      background-color: darkgreen;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 22px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #output {
+      width: 420px;
+      border: 2px dashed darkgreen;
+      border-radius: 10px;
+      background-color: #ffffff;
+      margin: 20px auto;
+      padding: 12px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Nirranjan's Zoo Of Wonders: Zoo Manager</h1>
+
+  <p>
+    This zoo is filled with a variety of exotic and unusual creatures, big and small!
+  </p>
+
+  <div id="zoo">
+
+    <div class="zone" id="pinkfairyarmadilloZone">
+      <h2>Pink Fairy Armadillo Enclosure</h2>
+      <p>Animal: <span class="animal">Pink Fairy Armadillo</span></p>
+    </div>
+
+    <div class="zone" id="sarcasticfringeheadZone">
+      <h2>Sarcastic Fringehead Enclosure</h2>
+      <p>Animal: <span class="animal">Sarcastioc Fringehead</span></p>
+    </div>
+
+    <div class="zone" id="mudskipperZone">
+      <h2>Mudskipper Enclosure</h2>
+      <p>Animal: <span class="animal">Mudskipper</span></p>
+    </div>
+
+  </div>
+
+  <button onclick="manageZoo()">Manage Zoo</button>
+
+  <div id="output">
+    Zoo information will appear here.
+  </div>
+
+  <script>
+    function manageZoo() {
+
+      // HTML DOM: Selecting elements from the webpage
+      let zoo = document.getElementById("zoo");
+      let pinkfairyarmadilloZone = document.getElementById("pinkfairyarmadilloZone");
+      let sarcasticfringeheadZone = document.getElementById("sarcasticfringeheadZone");
+      let mudskipperZone = document.getElementById("mudskipperZone");
+      let output = document.getElementById("output");
+
+      // The DOM Tree: zoo is the parent container of all animal zones
+      let parentNodeName = pinkfairyarmadilloZone.parentNode.id;
+
+      // Parent, Child, and Sibling Nodes
+      let firstChildZone = zoo.children[0].id;
+      let secondChildZone = zoo.children[1].id;
+      let nextSiblingZone = pinkfairyarmadilloZone.nextElementSibling.id;
+      let previousSiblingZone = sarcasticfringeheadZone.previousElementSibling.id;
+
+      // Types of Nodes
+      let elementNodeType = pinkfairyarmadilloZone.nodeType;
+      let textNodeType = pinkfairyarmadilloZone.firstChild.nodeType;
+
+      // JavaScript and the DOM: Changing content and style
+      pinkfairyarmadilloZone.style.backgroundColor = "#fff3cd";
+      sarcasticfringeheadZone.style.backgroundColor = "#d1ecf1";
+      mudskipperZone.style.backgroundColor = "#f8d7da";
+
+      pinkfairyarmadilloZone.querySelector("h2").innerHTML = "Updated Pink Fairy Armadillo Zone";
+      sarcasticfringeheadZone.querySelector("h2").innerHTML = "Updated Sarcastic Fringehead Zone";
+      mudskipperZone.querySelector("h2").innerHTML = "Updated Mudskipper Zone";
+
+      output.innerHTML =
+        "<strong>DOM Tree Information:</strong><br>" +
+        "Parent of Lion Zone: " + parentNodeName + "<br>" +
+        "First child of Zoo: " + firstChildZone + "<br>" +
+        "Second child of Zoo: " + secondChildZone + "<br><br>" +
+
+        "<strong>Sibling Node Information:</strong><br>" +
+        "Next sibling of Pink Fairy Armadillo Zone: " + nextSiblingZone + "<br>" +
+        "Previous sibling of Sarcastic Fringehead Zone: " + previousSiblingZone + "<br><br>" +
+
+        "<strong>Types of Nodes:</strong><br>" +
+        "Pink Fairy Armadillo Zone element node type: " + elementNodeType + "<br>" +
+        "Pink Fairy Armadillo Zone first child text node type: " + textNodeType + "<br><br>" +
+
+        "<strong>DOM Update:</strong><br>" +
+        "The animal zone headings and background colours were updated using JavaScript.";
+    }
+  </script>
+
+</body>
+</html>
