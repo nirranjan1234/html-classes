@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Calculator</h1>
+
+        <script>
+            
+            var choice = prompt("Welcome to My Simple Calculator. \n Please Enter your Choice. \n1.Addition.\n2.Subtraction. \n3.Multiplication. \n4.Division");
+
+            if (choice == '1') {
+                var l = prompt('Enter the first addend')
+                var b = prompt('Enter the second addend')
+                var result = Number(l) + Number(b)
+                alert('The Sum is ' + result)
+            }
+
+            if (choice == '2') {
+                var h = prompt('Enter the minuend')
+                var b = prompt('Enter the subtrahend')
+                var result = Number(h) - Number(b)
+                alert('The difference is ' + result)
+            }
+
+            if (choice == '3') {
+                var r = prompt('Enter the first factor')
+                var t = prompt('Enter the second factor')
+                var result = Number(r) * Number(t)
+                alert('The product is ' + result)
+            }
+
+            if (choice == '4') {
+                var h = prompt('Enter the dividend')
+                var cb = prompt('Enter the divisor')
+                var result = Number(h) / Number(cb)
+                alert('The remainder is ' + result)
+            }
+        </script>
+    </body>
+</html>
