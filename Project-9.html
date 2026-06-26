@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                text-align: center;
+                padding-top: 25px;
+                background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCyUifdQfxbzeoJDXA7hNLT_s-aDccGhqS-Q&s");
+                background-repeat: no-repeat;
+                background-size: 100% 1000px;
+            }
+            div{
+                border: 10px solid rgb(255, 0, 0);
+                border-radius: 15px;
+                background: rgb(0, 179, 255);
+                width: 500px;
+            }
+            #myInput{
+                width: 490px;
+                height: 400px;
+            }
+            button {
+                width: 492px;
+                background-color: aquamarine;
+            }
+        </style>
+
+    </head>
+    <body>
+        <center>
+     <div>
+        <h1>Add your items here</h1>
+        <form id="myForm">
+            <input id="myInput" type="text">
+            <button> <b>ADD</b> </button>
+        </form>
+
+        <h3>Shopping List</h3>
+        <ul id="myItem"></ul>
+        
+        </div>
+        </center>
+
+        <script>
+            var myForm = document.getElementById("myForm");
+            var myInput = document.getElementById("myInput");
+            var myItem = document.getElementById("myItem");
+
+            myForm.addEventListener("submit", function(event){
+                event.preventDefault();
+                createItem(myInput.value)
+            })
+
+            function createItem(inputItems){
+                var items = `<li>${inputItems}
+                    <button onclick="deleteElement(this)">Delete</button></li>`
+                    myItem.insertAdjacentHTML("beforeend", items)
+                    myInput.value = ""
+                    myInput.focus()
+            }
+
+            function deleteElement(ElementToDelete){
+                ElementToDelete.parentElement.remove()
+            }
+        </script>
+        
+    </body>
+</html>
