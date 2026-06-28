@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum of Arguments and Math Objects</title>
+</head>
+<body>
+
+    <p>Sum of arguments and Math objects</p>
+    <p id="demo"></p>
+
+    <script>
+        function sumAll() {
+            var sum = 0;
+
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+
+            return sum;
+        }
+
+        document.getElementById("demo").innerHTML = sumAll(1, 123, 500, 115, 44, 88);
+
+        // Convert 45 degrees to radians
+        var angle = 45 * Math.PI / 180;
+
+        var value = Math.sin(angle);
+        document.write("Sin 45 is : " + value + "<br>");
+
+        var value1 = Math.cos(angle);
+        document.write("Cos 45 is : " + value1 + "<br>");
+
+        var value2 = Math.tan(angle);
+        document.write("Tan 45 is : " + value2 + "<br>");
+    </script>
+
+</body>
