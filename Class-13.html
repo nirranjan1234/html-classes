@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <!--Slide Show-->
+        <section>
+            <img class="mySlides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCi4b1G8vFbWnLNpd3CXiaZ3kc4qxDswHrmuIQNxsDwl3wr_Cof_Iogn8&s=10" style="height:500px">
+            <img class="mySlides" src="https://www.readersdigest.ca/wp-content/uploads/2022/07/funny-pictures-social-image.jpg" style="height:500px">
+        </section>
+        <script>
+            // Automatic Slideshow - change image every 3 seconds
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) {myIndex = 1}
+                x[myIndex-1].style.display = "block";
+                setTimeout(carousel, 500);
+            }
+        </script>
+    </body>
+</html>
