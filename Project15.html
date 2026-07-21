@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+            body {
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #number {
+                font-size: 320px;
+            }
+
+            #number:hover {
+                cursor: pointer;
+            }
+
+            h1 {
+                padding-top: 100px;
+                color: rgb(255, 8, 0);
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <h1 id="one">Random numbers from 1 to 10</h1>
+
+        <div>Click</div>
+        <marquee><div id="number" onclick="stopStart()"></div></marquee>
+
+        <script>
+            // dice image from value 1 to 6 are given in an array, codes are from Die face Emojipedia
+            var numbers = ['1', '2', '3', '4', '5', '6','7','8','9','10'];
+            var stopped = true;
+
+            // for keep on changing the dice emojis
+            function change() {
+                var random = Math.floor(Math.random() * 10);
+                number.innerHTML = numbers[random];
+            }
+
+            function stopStart() {
+                if (stopped) {
+                    stopped = false;
+                    // change function is called here to change the image for every 0.1 seconds
+                    t = setInterval(change, 100);
+                } else {
+                    clearInterval(t);
+                    stopped = true;
+                }
+            }
+
+            // invoking function
+            window.onload = function() {
+                number = document.getElementById("number");
+                stopStart();
+            }
+
+        </script>
+    </body>
+</html>
