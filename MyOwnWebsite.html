@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirranjan's Authentic Indian Restaurant</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: antiquewhite;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: brown;
+        }
+
+        .topnav a {
+            float: left;
+            color: black;
+            text-decoration: none;
+            padding: 14px 16px;
+        }
+
+        .topnav a:hover {
+            background-color: red;
+        }
+
+        .topnav a.active {
+            background-color: burlywood;
+            color: rgb(56, 55, 55);
+        }
+
+        /* PARALLAX IMAGES */
+        .pimg1,
+        .pimg2 {
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 594px;
+            border: 6px solid black;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .pimg1 {
+            background-image: url("https://t4.ftcdn.net/jpg/04/35/23/95/360_F_435239569_iTa3kLtV6PtlOBchUV4w7J1Tm0oSCx1l.jpg");
+        }
+
+        .pimg2 {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNqeFLKlsgCCPRpfZLBFJyV_VI7dTuGvxqPRYLMXKQ3g&s=10");
+        }
+
+        .ptext {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            text-align: center;
+            color: #000;
+            font-size: 27px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .ptext .border {
+            background-color: #3e3e3e;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .ptext .border.trans {
+            background-color: brown;
+            color: black;
+            padding: 20px;
+        }
+
+        .ptext a {
+            display: inline-block;
+            background-color: burlywood;
+            color: black;
+            text-decoration: none;
+            text-transform: none;
+            font-size: 20px;
+            padding: 10px;
+            margin-top: 20px;
+            letter-spacing: normal;
+        }
+
+        .ptext a:hover {
+            background-color: red;
+        }
+
+        /* ==============================
+           ANIMATED JUMPING CHEF
+           ============================== */
+
+        .chef {
+            position: fixed;
+            width: 100px;
+            height: auto;
+            z-index: 9999;
+            pointer-events: none;
+
+            /* Smooth movement */
+            transition:
+                left 1.2s linear,
+                top 1.2s linear;
+
+            /* Makes the chef look like he's walking */
+            animation: walking 0.35s infinite alternate ease-in-out;
+        }
+
+        @keyframes walking {
+            from {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            to {
+                transform: translateY(-5px) rotate(3deg);
+            }
+        }
+
+        /* Chef climbing */
+        .chef.climbing {
+            animation: climbing 0.4s infinite alternate ease-in-out;
+        }
+
+        @keyframes climbing {
+            from {
+                transform: translateX(0) rotate(-5deg);
+            }
+
+            to {
+                transform: translateX(-3px) rotate(5deg);
+            }
+        }
+
+        /* ==============================
+           TIMELINE
+           ============================== */
+
+        .timeline-section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .timeline-title {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 50px;
+            color: black;
+            letter-spacing: 2px;
+            padding: 25px;
+            background-color: brown;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+
+            left: 50%;
+            top: 0;
+
+            width: 4px;
+            height: 100%;
+
+            background: brown;
+
+            transform: translateX(-50%);
+
+            transform-origin: top;
+            animation: drawLine 3s ease-out forwards;
+        }
+
+        @keyframes drawLine {
+
+            from {
+                transform: translateX(-50%) scaleY(0);
+            }
+
+            to {
+                transform: translateX(-50%) scaleY(1);
+            }
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+
+            opacity: 0;
+            animation: fadeInItem 0.8s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .timeline-item:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+
+        .timeline-item:nth-child(4) {
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeInItem {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-dot {
+            position: absolute;
+
+            top: 25px;
+
+            width: 22px;
+            height: 22px;
+
+            background-color: burlywood;
+
+            border: 4px solid brown;
+            border-radius: 50%;
+
+            z-index: 2;
+
+            animation: pulseDot 2s infinite;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -11px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -11px;
+        }
+
+        @keyframes pulseDot {
+
+            0% {
+                box-shadow: 0 0 0 0 rgba(165, 42, 42, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(165, 42, 42, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(165, 42, 42, 0);
+            }
+        }
+
+        .timeline-content {
+            background-color: white;
+
+            padding: 20px;
+
+            border: 3px solid brown;
+            border-radius: 8px;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+            transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-content .time {
+            color: brown;
+
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .timeline-content .step {
+            display: block;
+
+            margin-top: 8px;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+        .timeline-content h3 {
+            margin: 8px 0;
+
+            color: #3e3e3e;
+
+            font-size: 22px;
+        }
+
+        .timeline-content p {
+            margin: 0;
+
+            color: #444;
+
+            line-height: 1.5;
+
+            font-family: Arial, sans-serif;
+        }
+
+        /* ==============================
+           MOBILE
+           ============================== */
+
+        @media (max-width: 568px) {
+
+            .timeline-section {
+                padding: 40px 10px;
+            }
+
+            .timeline-title {
+                font-size: 28px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+
+                width: 100%;
+
+                left: 0;
+
+                padding-left: 55px;
+                padding-right: 5px;
+
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+
+                left: 9px;
+                right: auto;
+            }
+
+            .timeline-content {
+                padding: 15px;
+            }
+
+            /* Smaller chef on phones */
+            .chef {
+                font-size: 40px;
+            }
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+            background-color: brown;
+            color: black;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        /* MOBILE NAVIGATION */
+
+        @media (max-width: 568px) {
+
+            .topnav a {
+                float: none;
+                display: block;
+                text-align: center;
+            }
+
+            .pimg1,
+            .pimg2 {
+                margin-left: 10px;
+                margin-right: 10px;
+                min-height: 400px;
+                background-attachment: scroll;
+            }
+
+            .ptext {
+                font-size: 20px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==============================
+         JUMPING CHEF
+         ============================== -->
+
+    <div class="chef" id="chef">👨‍🍳</div>
+
+
+    <h1>Nirranjan's Authentic Indian Restaurant</h1>
+
+    <!-- NAVIGATION -->
+
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="About.html">About Us</a>
+        <a href="Food.html">Food</a>
+        <a href="Reviews.html">Reviews</a>
+        <a href="Contact Us.html">Contact Us</a>
+    </div>
+
+    <br>
+    <br>
+
+    <!-- FIRST IMAGE -->
+
+    <div class="pimg1">
+
+        <div class="ptext">
+
+            <span class="border trans">
+                Now Hiring
+            </span>
+
+            <br>
+
+            <a class="Apply" href="#">
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+
+    <!-- SECOND IMAGE -->
+
+    <div class="pimg2">
+
+        <div class="ptext">
+
+            <span class="border trans">
+                Support Our Charity!
+            </span>
+
+            <br>
+
+            <a class="Apply" href="#">
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+         RESTAURANT TIMELINE
+         ============================== -->
+
+    <section class="timeline-section">
+
+        <h2 class="timeline-title">
+            Restaurant Schedule
+        </h2>
+
+        <div class="timeline">
+
+            <!-- TIMELINE ITEM 1 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <div class="time">
+                        Morning 10:00 AM
+                    </div>
+
+                    <span class="step">
+                        First Step
+                    </span>
+
+                    <h3>
+                        Restaurant Opening
+                    </h3>
+
+                    <p>
+                        We open our restaurant and prepare
+                        fresh authentic Indian food for our guests.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TIMELINE ITEM 2 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <div class="time">
+                        Morning 10:15 AM
+                    </div>
+
+                    <span class="step">
+                        Second Step
+                    </span>
+
+                    <h3>
+                        Inventory Check
+                    </h3>
+
+                    <p>
+                        We check our ingredients, supplies,
+                        and make sure everything is ready
+                        for the day.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TIMELINE ITEM 3 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <div class="time">
+                        Morning 10:30 AM
+                    </div>
+
+                    <span class="step">
+                        Third Step
+                    </span>
+
+                    <h3>
+                        Quality Control
+                    </h3>
+
+                    <p>
+                        Our team checks the quality,
+                        presentation, and freshness of
+                        every dish.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TIMELINE ITEM 4 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <div class="time">
+                        Night 10:30 PM
+                    </div>
+
+                    <span class="step">
+                        Final Step
+                    </span>
+
+                    <h3>
+                        Restaurant Closing
+                    </h3>
+
+                    <p>
+                        We finish service, clean the restaurant,
+                        and prepare everything for the next day.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <p>
+            &copy; 2025 Nirranjan's Authentic Indian Restaurant.
+            All Rights Reserved.
+        </p>
+
+    </div>
+
+
+    <!-- ==============================
+         CHEF RANDOM MOVEMENT
+         ============================== -->
+
+    <script>
+
+        const chef = document.getElementById("chef");
+
+        function moveChef() {
+
+            // Keep chef inside the visible screen
+
+            const maxX = window.innerWidth - 70;
+            const maxY = window.innerHeight - 70;
+
+            // Pick a random location
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            // Move chef
+
+            chef.style.left = randomX + "px";
+            chef.style.top = randomY + "px";
+        }
+
+        // Move chef immediately
+
+        moveChef();
+
+        // Move chef every 1.5 seconds
+
+        setInterval(moveChef, 1500);
+
+    </script>
+
+</body>
+
+</html>
